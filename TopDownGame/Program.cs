@@ -6,8 +6,8 @@ Raylib.SetTargetFPS(100);
 int x = 0;
 int floorY =550;
 int floorSpeedY =-1;
-Vector2 movement = new Vector2(1,0);
-Vector2 position = new Vector2(2,1);
+Vector2 movement = new Vector2(0.1f,0.1f);
+//Vector2 position = new Vector2(2,1);
 
 Color hotpink= new Color(255, 105, 180, 225);
 
@@ -42,13 +42,10 @@ while (!Raylib.WindowShouldClose())
     {
        movement = Vector2.Normalize(movement); 
     }
-    
-
     movement *= speed;
 
     characterRect.x += movement.X;
     characterRect.y += movement.Y;
-
     
     floorY += floorSpeedY;
     if (floorY <0)
@@ -59,7 +56,7 @@ while (!Raylib.WindowShouldClose())
     {
         floorSpeedY = -1;
     }
-    position += movement;
+    //position += movement;
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.BLUE);
 
@@ -69,7 +66,7 @@ while (!Raylib.WindowShouldClose())
     Raylib.DrawRectangle(0, floorY, 800, 30, Color.BLACK);
     Raylib.DrawRectangleRec(characterRect, Color.BLUE);
     Raylib.DrawTexture(characterImage, (int) characterRect.x, (int) characterRect.y, Color.WHITE);
-
+ 
     Raylib.EndDrawing();
 }
 
